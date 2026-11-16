@@ -91,11 +91,18 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/logo-icon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/logo-icon.svg" }],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
   },
+  manifest: "/manifest.json",
   openGraph: {
     title: "Facebook Video Downloader - 1080p HD & MP3 | FBSave Pro",
     description:
@@ -180,6 +187,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGlobal) }}
