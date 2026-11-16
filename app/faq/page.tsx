@@ -3,9 +3,19 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "Facebook Video Downloader FAQ & Troubleshooting - FBSave",
+  title: "Facebook Video Downloader FAQ & Troubleshooting - FBSave Pro",
   description:
     "Common questions, troubleshooting tips, and answers about downloading Facebook videos, Reels, sound, and private posts.",
+  keywords: [
+    "facebook video downloader faq",
+    "why cant i download facebook video",
+    "facebook video downloader troubleshooting",
+    "how to download private facebook videos",
+    "facebook video download error",
+  ],
+  alternates: {
+    canonical: "https://fbsave.net/faq",
+  },
 };
 
 export default function FAQPage() {
@@ -40,8 +50,25 @@ export default function FAQPage() {
     },
   ];
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col antialiased selection:bg-blue-600 selection:text-white relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent blur-[120px] rounded-full" />
       </div>

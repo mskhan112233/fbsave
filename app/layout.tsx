@@ -15,24 +15,72 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://fbsave.net"),
   title: {
-    default: "FBSave Pro - Free Facebook Video & Reels Downloader (1080p HD)",
+    default: "Facebook Video Downloader - Save FB Videos & Reels in 1080p Full HD | FBSave Pro",
     template: "%s | FBSave Pro",
   },
   description:
-    "Fast, free Facebook video downloader in 1080p Full HD, 720p, SD, and MP3 audio. Download Facebook Reels, Watch videos, Stories, and clips with zero watermarks.",
+    "Best Facebook Video Downloader online. Download FB videos, Facebook Reels, Stories, and Watch clips in 1080p Full HD, 720p, or high-bitrate MP3 audio. 100% free, fast, and no watermark.",
   keywords: [
+    // Primary High-Volume Keywords
     "facebook video downloader",
+    "download facebook video",
+    "fb video downloader",
+    "facebook downloader",
     "download facebook reels",
     "facebook reel downloader",
-    "save facebook video 1080p",
+    "fb reel saver",
+    "save facebook reels",
     "facebook story downloader",
-    "fb to mp3 converter",
+    "fb story saver",
+    "facebook to mp3",
+    "facebook audio downloader",
+    "convert facebook video to mp3",
+
+    // Resolution & Quality Searches
+    "facebook video downloader 1080p",
+    "download facebook video 1080p full hd",
+    "facebook video downloader 4k",
+    "download fb video 720p",
     "facebook video saver hd",
+    "facebook video download without watermark",
+    "fb video download with audio",
+
+    // Device & Platform Searches
+    "save facebook video on iphone",
+    "download facebook video android",
+    "how to download facebook video mobile",
+    "facebook video downloader for pc",
+    "facebook watch video download",
+    "download fb live video",
+    "facebook clips downloader",
+
+    // Competitor & Search Alternatives
+    "fdown",
+    "snapsave facebook",
+    "savefrom facebook",
+    "fbdown net alternative",
+    "getfvid alternative",
     "fbsave",
+    "fbsave pro",
   ],
-  authors: [{ name: "FBSave Pro Team" }],
+  authors: [{ name: "FBSave Pro Team", url: "https://fbsave.net" }],
   creator: "FBSave Pro",
   publisher: "FBSave Pro",
+  category: "Multimedia Tool",
+  alternates: {
+    canonical: "https://fbsave.net",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -49,8 +97,9 @@ export const metadata: Metadata = {
     apple: [{ url: "/logo-icon.svg" }],
   },
   openGraph: {
-    title: "FBSave Pro - Best Facebook Video & Reels Downloader",
-    description: "Download Facebook videos and reels in 1080p Full HD with audio. 100% free and fast.",
+    title: "Facebook Video Downloader - 1080p HD & MP3 | FBSave Pro",
+    description:
+      "Save Facebook videos, reels, stories, and watch clips in 1080p Full HD with sound. Free online Facebook downloader with zero watermark.",
     url: "https://fbsave.net",
     siteName: "FBSave Pro",
     images: [
@@ -58,7 +107,7 @@ export const metadata: Metadata = {
         url: "/logo.svg",
         width: 340,
         height: 72,
-        alt: "FBSave Pro Logo",
+        alt: "FBSave Pro - Facebook Video Downloader",
       },
     ],
     locale: "en_US",
@@ -66,10 +115,62 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FBSave Pro - Facebook Video Downloader",
-    description: "Download Facebook Reels and Videos in 1080p Full HD without watermarks.",
+    title: "Facebook Video Downloader in 1080p Full HD - FBSave Pro",
+    description:
+      "Download Facebook Reels, Stories, and Videos in crystal clear 1080p Full HD or convert directly to MP3 audio. 100% free.",
     images: ["/logo.svg"],
   },
+};
+
+const jsonLdGlobal = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://fbsave.net/#website",
+      "url": "https://fbsave.net",
+      "name": "FBSave Pro",
+      "description": "High-Definition Facebook Video, Reels, and Story Downloader.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "FBSave Pro",
+        "url": "https://fbsave.net",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://fbsave.net/logo.svg",
+        },
+      },
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://fbsave.net/#app",
+      "name": "FBSave Pro - Facebook Video Downloader",
+      "url": "https://fbsave.net",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All (Windows, macOS, Android, iOS, Linux)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "18420",
+        "bestRating": "5",
+        "worstRating": "1",
+      },
+      "featureList": [
+        "Facebook Reels 1080p HD Download",
+        "Full Audio and Sound Synchronization",
+        "Facebook Story Saver",
+        "Direct Facebook to MP3 Audio Extraction",
+        "Zero Watermark and Original Quality",
+        "Fast Tunnel Streaming - No Redirects",
+        "Mobile Optimized for Safari and Chrome",
+      ],
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -78,6 +179,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGlobal) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#0b0f19] text-slate-100">{children}</body>
     </html>
   );

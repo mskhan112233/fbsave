@@ -3,9 +3,58 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "How to Download Facebook Videos - Complete Step-by-Step Guide",
+  title: "How to Download Facebook Videos - Step-by-Step Guide for Mobile & PC",
   description:
-    "Learn how to download and save Facebook videos and reels on iPhone, Android, Windows, and Mac in 1080p Full HD.",
+    "Complete visual step-by-step tutorial on how to download Facebook videos and Reels on iPhone (iOS), Android, Windows, and Mac in 1080p Full HD.",
+  keywords: [
+    "how to download facebook videos",
+    "how to save facebook video on iphone",
+    "how to download facebook video android",
+    "how to save fb reels to camera roll",
+    "facebook video download tutorial",
+    "step by step facebook video downloader",
+  ],
+  alternates: {
+    canonical: "https://fbsave.net/how-to-download",
+  },
+  openGraph: {
+    title: "How to Download Facebook Videos (iPhone, Android, PC) - Guide",
+    description: "Step-by-step guide to saving Facebook videos in 1080p HD without software.",
+    url: "https://fbsave.net/how-to-download",
+  },
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Download Facebook Videos in 1080p Full HD",
+  "description": "Easy 4-step tutorial to download Facebook videos, reels, and stories directly to your phone or computer.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Copy the Facebook Video Link",
+      "text": "Open Facebook, navigate to the video, click Share, and select Copy Link."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Paste the Link into FBSave",
+      "text": "Go to fbsave.net, paste the video link into the search box, and click Get Video."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Select Your Desired Quality",
+      "text": "Choose from 1080p Full HD, 720p HD, SD, or MP3 Audio."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Download and Save to Device",
+      "text": "Click the Download button to immediately save the MP4 video to your device's downloads folder or camera roll."
+    }
+  ]
 };
 
 export default function HowToDownloadPage() {
@@ -38,6 +87,11 @@ export default function HowToDownloadPage() {
 
   return (
     <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col antialiased selection:bg-blue-600 selection:text-white relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent blur-[120px] rounded-full" />
       </div>

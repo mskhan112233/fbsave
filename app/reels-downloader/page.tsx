@@ -3,14 +3,53 @@ import Footer from "../components/Footer";
 import DownloaderBox from "../components/DownloaderBox";
 
 export const metadata = {
-  title: "Facebook Reels Downloader - Save FB Reels in 1080p HD with Audio",
+  title: "Facebook Reels Downloader - Download FB Reels in 1080p HD with Audio",
   description:
-    "Free Facebook Reels Downloader. Download FB Reels videos in 1080p Full HD, 720p, or MP3 audio directly to your iPhone, Android, or PC.",
+    "Free Facebook Reels Downloader. Download FB Reels videos in 1080p Full HD with original sound. No watermark, fast, and works on iPhone, Android, and PC.",
+  keywords: [
+    "facebook reels downloader",
+    "download facebook reels",
+    "fb reel saver",
+    "facebook reel video download",
+    "save facebook reels with audio",
+    "download fb reels 1080p",
+    "fb reels downloader online",
+    "facebook reels download without watermark",
+    "save fb reels on iphone",
+    "facebook reel to mp4",
+  ],
+  alternates: {
+    canonical: "https://fbsave.net/reels-downloader",
+  },
+  openGraph: {
+    title: "Facebook Reels Downloader - 1080p Full HD with Sound",
+    description: "Download Facebook Reels in 1080p with original synchronized audio. 100% free and no watermark.",
+    url: "https://fbsave.net/reels-downloader",
+  },
+};
+
+const reelsSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Facebook Reels Downloader - FBSave Pro",
+  "url": "https://fbsave.net/reels-downloader",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+  },
 };
 
 export default function ReelsDownloaderPage() {
   return (
     <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col antialiased selection:bg-blue-600 selection:text-white relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reelsSchema) }}
+      />
+
       {/* Decorative backdrop gradients */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent blur-[120px] rounded-full" />
@@ -21,12 +60,12 @@ export default function ReelsDownloaderPage() {
 
       <main className="flex-1 z-10 max-w-5xl mx-auto px-4 py-12 w-full flex flex-col items-center">
         <DownloaderBox
-          badgeText="Specialized Facebook Reels Downloader"
+          badgeText="Dedicated Facebook Reels Downloader"
           headline={
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
               Facebook Reels Downloader <br />
               <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-cyan-300 bg-clip-text text-transparent">
-                With Original Audio & 1080p HD
+                With Original Audio in 1080p HD
               </span>
             </h1>
           }
@@ -34,7 +73,7 @@ export default function ReelsDownloaderPage() {
             <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
               Extract and save any public Facebook Reel in stunning{" "}
               <span className="text-slate-200 font-semibold">1080p Full HD</span> with crisp synchronized sound. Fast,
-              free, and with no watermark.
+              free, and with zero watermarks.
             </p>
           }
           placeholder="Paste Facebook Reel link (e.g., https://www.facebook.com/reel/...)"
@@ -44,7 +83,7 @@ export default function ReelsDownloaderPage() {
         />
 
         {/* Informational content section */}
-        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 mb-16">
+        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 mb-12">
           <div className="bg-[#171f30]/65 backdrop-blur-md p-6 rounded-2xl border border-white/5">
             <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-cyan-400 flex items-center justify-center mb-4 text-xl">
               ⚡
@@ -75,6 +114,25 @@ export default function ReelsDownloaderPage() {
             </p>
           </div>
         </div>
+
+        {/* In-depth Reels SEO Guide */}
+        <section className="w-full max-w-4xl bg-[#131b2d]/70 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/5 shadow-xl mb-16 space-y-6 text-sm text-slate-300 leading-relaxed">
+          <h2 className="text-2xl font-bold text-white">How to Download Facebook Reels with Audio</h2>
+          <p>
+            Facebook Reels have quickly become one of the most popular short-form video formats. However, the official
+            Facebook application does not provide a direct button to save Reels to your phone gallery with sound. With
+            <strong> FBSave Pro</strong>, you can download any public Reel in high-definition MP4 with full audio sync.
+          </p>
+
+          <div className="space-y-4 pt-2">
+            <h3 className="text-lg font-bold text-white">3 Simple Steps to Save Any FB Reel:</h3>
+            <ol className="list-decimal pl-5 space-y-2 text-xs sm:text-sm text-slate-300">
+              <li>Open the Facebook app, tap on the Reel, click the <strong>Share</strong> button, and tap <strong>Copy Link</strong>.</li>
+              <li>Paste the URL into our search bar above and click <strong>Get Video</strong>.</li>
+              <li>Select <strong>1080p HD</strong> or <strong>Audio MP3</strong> and click <strong>Download</strong>.</li>
+            </ol>
+          </div>
+        </section>
       </main>
 
       <Footer />
