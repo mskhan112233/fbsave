@@ -76,7 +76,7 @@ const SAMPLE_DATA = {
 };
 
 // Node.js fallback scraper
-async function scrapeDirectNode(url: string): Promise<any> {
+async function scrapeDirectNode(url: string): Promise<Record<string, unknown> | null> {
   try {
     const res = await fetch(url, {
       headers: {
@@ -101,7 +101,7 @@ async function scrapeDirectNode(url: string): Promise<any> {
     const title = clean(titleMatch?.[1]) || "Facebook Video";
     const thumbnail = clean(thumbMatch?.[1]) || undefined;
 
-    const formats: any[] = [];
+    const formats: Record<string, unknown>[] = [];
     if (hdUrl) {
       formats.push({
         id: "1080p",
@@ -140,13 +140,13 @@ async function scrapeDirectNode(url: string): Promise<any> {
         formats,
       };
     }
-  } catch (e) {
+  } catch {
     // ignore
   }
   return null;
 }
 
-function runPythonExtractor(url: string): Promise<any> {
+function runPythonExtractor(url: string): Promise<Record<string, unknown>> {
   return new Promise((resolve) => {
     const cwd = process.cwd();
     const parentDir = path.resolve(cwd, "..");
@@ -169,10 +169,8 @@ except Exception as e:
     const py = spawn("python", ["-c", pyCode, url]);
 
     let stdout = "";
-    let stderr = "";
-
     py.stdout.on("data", (d) => { stdout += d.toString(); });
-    py.stderr.on("data", (d) => { stderr += d.toString(); });
+    py.stderr.on("data", () => { /* ignore */ });
 
     py.on("close", async () => {
       const marker = "__FBSAVE_JSON__";
@@ -234,8 +232,9 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(result);
-  } catch (error: any) {
-    return NextResponse.json({ success: false, error: error?.message || "Internal server error" }, { status: 500 });
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : "Internal server error";
+    return NextResponse.json({ success: false, error: errorMsg }, { status: 500 });
   }
 }
 

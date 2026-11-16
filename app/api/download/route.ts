@@ -44,11 +44,12 @@ export async function GET(req: NextRequest) {
       resHeaders.set("Content-Length", contentLength);
     }
 
-    return new NextResponse(upstreamRes.body as any, {
+    return new NextResponse(upstreamRes.body as BodyInit | null, {
       status: 200,
       headers: resHeaders
     });
-  } catch (error: any) {
-    return NextResponse.json({ success: false, error: error?.message || "Stream download error" }, { status: 500 });
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : "Stream download error";
+    return NextResponse.json({ success: false, error: errorMsg }, { status: 500 });
   }
 }
