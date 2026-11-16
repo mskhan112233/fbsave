@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  verification: {
+    google: "72uMucmnbML64Yzi3IB1cgOv32rbEBgulPW5lEu4YDg",
+  },
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
